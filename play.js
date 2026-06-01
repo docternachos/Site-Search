@@ -1,37 +1,25 @@
-const params =
-    new URLSearchParams(
-        window.location.search
-    );
+const params = new URLSearchParams(window.location.search);
 
-const url =
-    params.get("url");
+let url = params.get("url");
+const name = params.get("name");
 
-const frame =
-    document.getElementById(
-        "siteFrame"
-    );
+const frame = document.getElementById("siteFrame");
+const blockedMessage = document.getElementById("blockedMessage");
+const openSiteBtn = document.getElementById("openSiteBtn");
+const fullscreenBtn = document.getElementById("fullscreenBtn");
 
-const blockedMessage =
-    document.getElementById(
-        "blockedMessage"
-    );
+if (!url || url === "null" || url === "undefined") {
+    alert("No valid URL provided");
+    window.location.href = "/";
+}
 
-const openSiteBtn =
-    document.getElementById(
-        "openSiteBtn"
-    );
-
-const fullscreenBtn =
-    document.getElementById(
-        "fullscreenBtn"
-    );
-
-if (!url) {
-    location.href = "/";
+try {
+    url = decodeURIComponent(url);
+} catch (e) {
+    console.error("URL decode failed");
 }
 
 frame.src = url;
-
 openSiteBtn.href = url;
 
 //
@@ -45,29 +33,18 @@ frame.onload = () => {
 
 setTimeout(() => {
     if (!loaded) {
-        frame.style.display =
-            "none";
-
-        blockedMessage.classList.remove(
-            "hidden"
-        );
+        frame.style.display = "none";
+        blockedMessage.classList.remove("hidden");
     }
-}, 4000);
+}, 5000);
 
 //
 // FULLSCREEN
 //
-fullscreenBtn.addEventListener(
-    "click",
-    async () => {
-        try {
-            if (
-                frame.requestFullscreen
-            ) {
-                await frame.requestFullscreen();
-            }
-        } catch (e) {
-            console.error(e);
-        }
+fullscreenBtn.addEventListener("click", async () => {
+    try {
+        await frame.requestFullscreen();
+    } catch (e) {
+        console.error(e);
     }
-);
+});
