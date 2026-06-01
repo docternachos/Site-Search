@@ -1,0 +1,276 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #080808;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.background-glow {
+    position: fixed;
+    width: 700px;
+    height: 700px;
+    background: rgba(140, 0, 255, 0.18);
+    filter: blur(140px);
+    border-radius: 50%;
+    top: -200px;
+    left: -200px;
+    z-index: -1;
+}
+
+.topbar {
+    width: 100%;
+    height: 85px;
+    background: rgba(15,15,15,.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-icon {
+    color: #a855f7;
+    font-size: 30px;
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: 700;
+}
+
+.admin-btn,
+.fullscreen-btn,
+.back-btn,
+#loginBtn,
+#addSiteBtn,
+.open-site-btn {
+    background: linear-gradient(
+        135deg,
+        #7e22ce,
+        #9333ea
+    );
+    border: none;
+    color: white;
+    padding: 14px 22px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .25s ease;
+}
+
+.admin-btn:hover,
+.fullscreen-btn:hover,
+.back-btn:hover,
+#loginBtn:hover,
+#addSiteBtn:hover,
+.open-site-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 30px rgba(168,85,247,.4);
+}
+
+.container {
+    width: min(1400px, 92%);
+    margin: auto;
+    padding: 40px 0;
+}
+
+.hero {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.hero h2 {
+    font-size: 58px;
+    font-weight: 700;
+}
+
+.hero p {
+    color: #999;
+    margin-top: 12px;
+}
+
+.search-box {
+    margin-top: 35px;
+}
+
+.search-box input,
+#siteName,
+#siteImage,
+#siteURL,
+#passcode {
+    width: 100%;
+    max-width: 700px;
+    background: #121212;
+    border: 1px solid rgba(255,255,255,.08);
+    color: white;
+    padding: 18px 22px;
+    border-radius: 18px;
+    font-size: 16px;
+    outline: none;
+    transition: .2s ease;
+}
+
+.search-box input:focus,
+#siteName:focus,
+#siteImage:focus,
+#siteURL:focus,
+#passcode:focus {
+    border-color: #9333ea;
+    box-shadow: 0 0 20px rgba(147,51,234,.25);
+}
+
+.sites-grid {
+    margin-top: 55px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    gap: 30px;
+}
+
+.site-card {
+    background: rgba(18,18,18,.9);
+    border-radius: 28px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,.08);
+    transition: .25s ease;
+}
+
+.site-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 40px rgba(168,85,247,.25);
+}
+
+.site-image {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+}
+
+.site-content {
+    padding: 22px;
+}
+
+.site-title {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.play-btn {
+    margin-top: 18px;
+    display: inline-block;
+    background: #9333ea;
+    padding: 12px 20px;
+    border-radius: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.player-body {
+    overflow: hidden;
+}
+
+.player-topbar {
+    height: 80px;
+    background: #111;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.iframe-wrapper {
+    height: calc(100vh - 80px);
+}
+
+#siteFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: #000;
+}
+
+.blocked-message {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.glass-card,
+.admin-card {
+    background: rgba(18,18,18,.92);
+    padding: 40px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,.08);
+    backdrop-filter: blur(25px);
+}
+
+.glass-card {
+    width: 420px;
+    text-align: center;
+}
+
+.glass-card input {
+    margin: 20px 0;
+}
+
+.admin-panel {
+    width: min(1000px, 92%);
+    margin: auto;
+    padding: 40px 0;
+}
+
+.admin-card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.admin-sites {
+    margin-top: 40px;
+}
+
+.admin-site-item {
+    background: #121212;
+    border-radius: 18px;
+    padding: 18px;
+    margin-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.delete-btn {
+    background: crimson;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 12px;
+    color: white;
+    cursor: pointer;
+}

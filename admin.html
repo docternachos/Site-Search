@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background-glow"></div>
+
+<div id="loginContainer" class="login-container">
+
+    <div class="glass-card">
+
+        <h1>Admin Access</h1>
+
+        <p>Enter Passcode</p>
+
+        <input
+            type="password"
+            id="passcode"
+            placeholder="Passcode"
+        >
+
+        <button id="loginBtn">
+            Enter
+        </button>
+
+        <p id="errorText" class="error-text"></p>
+
+    </div>
+
+</div>
+
+<div id="adminPanel" class="admin-panel hidden">
+
+    <header class="topbar">
+        <h1>Site Search Admin</h1>
+    </header>
+
+    <div class="admin-card">
+
+        <h2>Add Website</h2>
+
+        <input
+            type="text"
+            id="siteName"
+            placeholder="Website Name"
+        >
+
+        <input
+            type="text"
+            id="siteImage"
+            placeholder="Image URL"
+        >
+
+        <input
+            type="text"
+            id="siteURL"
+            placeholder="Website URL"
+        >
+
+        <button id="addSiteBtn">
+            Add Site
+        </button>
+
+    </div>
+
+    <div class="admin-sites">
+
+        <h2>Current Sites</h2>
+
+        <div id="adminSiteList">
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="module" src="firebase.js"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>

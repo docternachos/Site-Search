@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Site</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="player-body">
+
+<div class="player-topbar">
+
+    <button onclick="history.back()" class="back-btn">
+        ← Back
+    </button>
+
+    <div class="player-title">
+        Site Search
+    </div>
+
+    <button id="fullscreenBtn" class="fullscreen-btn">
+        Fullscreen
+    </button>
+
+</div>
+
+<div class="iframe-wrapper">
+
+    <iframe
+        id="siteFrame"
+        allowfullscreen
+    ></iframe>
+
+    <div id="blockedMessage" class="blocked-message hidden">
+        <h2>This site cannot be embedded.</h2>
+        <p>Some websites block iframe access.</p>
+
+        <a id="openSiteBtn" target="_blank" class="open-site-btn">
+            Open Site
+        </a>
+    </div>
+
+</div>
+
+<script src="play.js"></script>
+
+</body>
+</html>
