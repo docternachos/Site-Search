@@ -14,20 +14,10 @@ import {
 // DEFAULT CODE ACCOUNTS
 //
 const DEFAULT_USERS = {
-    nachos: {
+    docternachos: {
         password: "010281",
         role: "owner"
     },
-
-    backupowner: {
-        password: "backup123",
-        role: "owner"
-    },
-
-    friend1: {
-        password: "abc123",
-        role: "admin"
-    }
 };
 
 //
