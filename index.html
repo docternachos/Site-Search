@@ -1,56 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Site Search</title>
+<meta charset="UTF-8">
 
-    <link rel="stylesheet" href="style.css">
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Site Search</title>
+
+<link
+    rel="stylesheet"
+    href="style.css"
+/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
+
 <body>
 
-    <div class="background-glow"></div>
+<div class="bg-glow"></div>
 
-    <header class="topbar">
-        <div class="logo">
-            <span class="logo-icon">⬢</span>
-            <h1>Site Search</h1>
+<header class="topbar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+            ◆
         </div>
 
-        <a href="admin.html" class="admin-btn">
-            Admin
-        </a>
-    </header>
+        <h1>
+            Site Search
+        </h1>
 
-    <main class="container">
+    </div>
 
-        <section class="hero">
-            <h2>Search & Launch Websites</h2>
-            <p>Fast, clean, and organized site access.</p>
+    <a
+        href="admin.html"
+        class="admin-btn"
+    >
+        Admin
+    </a>
 
-            <div class="search-box">
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search websites..."
-                >
-            </div>
-        </section>
+</header>
 
-        <section id="sitesGrid" class="sites-grid">
+<!-- ANNOUNCEMENT -->
+<div
+    id="announcementBar"
+    class="announcement hidden"
+></div>
 
-        </section>
+<!-- HERO -->
+<section class="hero">
 
-        <div id="emptyState" class="empty-state">
-            No websites found.
-        </div>
+    <h1>
+        Discover Websites
+    </h1>
 
-    </main>
+    <p>
+        Search and launch websites instantly.
+    </p>
 
-<script type="module" src="firebase.js"></script>
-<script type="module" src="app.js"></script>
+    <input
+        id="searchInput"
+        type="text"
+        placeholder="Search websites..."
+    >
+
+</section>
+
+<!-- CATEGORY FILTERS -->
+<div class="categories">
+
+    <button
+        class="category-btn active"
+        data-category="all"
+    >
+        All
+    </button>
+
+    <button
+        class="category-btn"
+        data-category="Games"
+    >
+        Games
+    </button>
+
+    <button
+        class="category-btn"
+        data-category="Tools"
+    >
+        Tools
+    </button>
+
+    <button
+        class="category-btn"
+        data-category="School"
+    >
+        School
+    </button>
+
+    <button
+        class="category-btn"
+        data-category="Entertainment"
+    >
+        Entertainment
+    </button>
+
+</div>
+
+<!-- FEATURED -->
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+            ⭐ Featured
+        </h2>
+
+    </div>
+
+    <div
+        id="featuredGrid"
+        class="sites-grid"
+    ></div>
+
+</section>
+
+<!-- RECENT -->
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+            🕒 Recently Added
+        </h2>
+
+    </div>
+
+    <div
+        id="recentGrid"
+        class="sites-grid"
+    ></div>
+
+</section>
+
+<!-- ALL -->
+<section class="section">
+
+    <div class="section-header">
+
+        <h2>
+            🌐 All Sites
+        </h2>
+
+    </div>
+
+    <div
+        id="sitesGrid"
+        class="sites-grid"
+    ></div>
+
+</section>
+
+<script
+    type="module"
+    src="app.js"
+></script>
 
 </body>
 </html>

@@ -3,22 +3,12 @@ const params =
         window.location.search
     );
 
-let url =
+const url =
     params.get("url");
 
-const frame =
+const iframe =
     document.getElementById(
         "siteFrame"
-    );
-
-const blockedMessage =
-    document.getElementById(
-        "blockedMessage"
-    );
-
-const openSiteBtn =
-    document.getElementById(
-        "openSiteBtn"
     );
 
 const fullscreenBtn =
@@ -26,68 +16,33 @@ const fullscreenBtn =
         "fullscreenBtn"
     );
 
+const openSiteBtn =
+    document.getElementById(
+        "openSiteBtn"
+    );
+
+const blockedMessage =
+    document.getElementById(
+        "blockedMessage"
+    );
+
+//
+// INVALID URL
+//
 if (!url) {
+
     window.location.href =
-        "/";
+        "index.html";
 }
 
-try {
-    url =
-        decodeURIComponent(
-            url
-        );
-} catch {}
-
-frame.src = url;
-
-openSiteBtn.href = url;
-
 //
-// KEYBOARD FIX
+// LOAD SITE
 //
-frame.setAttribute(
-    "tabindex",
-    "0"
-);
+iframe.src =
+    url;
 
-frame.addEventListener(
-    "load",
-    () => {
-
-        setTimeout(() => {
-            frame.focus();
-
-            try {
-                frame.contentWindow.focus();
-            } catch {}
-        }, 300);
-    }
-);
-
-//
-// SMART BLOCK DETECTION
-//
-let loaded = false;
-
-frame.onload = () => {
-    loaded = true;
-};
-
-setTimeout(() => {
-
-    if (!loaded) {
-
-        frame.style.display =
-            "none";
-
-        blockedMessage
-            .classList
-            .remove(
-                "hidden"
-            );
-    }
-
-}, 5000);
+openSiteBtn.href =
+    url;
 
 //
 // FULLSCREEN
@@ -95,27 +50,52 @@ setTimeout(() => {
 fullscreenBtn
 .addEventListener(
     "click",
-    async () => {
+    () => {
 
-        try {
+        if (
+            iframe.requestFullscreen
+        ) {
 
-            await frame
-                .requestFullscreen();
-
-            setTimeout(() => {
-
-                frame.focus();
-
-                try {
-                    frame
-                    .contentWindow
-                    .focus();
-                } catch {}
-
-            }, 300);
-
-        } catch (e) {
-            console.error(e);
+            iframe
+            .requestFullscreen();
         }
+    }
+);
+
+//
+// EMBED BLOCK CHECK
+//
+iframe.onload =
+() => {
+
+    try {
+
+        iframe.contentWindow
+        .document;
+
+    } catch {
+
+        //
+        // site blocked
+        //
+        blockedMessage
+            .classList
+            .remove(
+                "hidden"
+            );
+
+        iframe.style.display =
+            "none";
+    }
+};
+
+//
+// KEYBOARD FIX
+//
+window.addEventListener(
+    "click",
+    () => {
+
+        iframe.focus();
     }
 );

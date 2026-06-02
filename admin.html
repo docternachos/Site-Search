@@ -1,88 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
 
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>
+    Site Search Admin
+</title>
+
+<link
+    rel="stylesheet"
+    href="style.css"
+/>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
 </head>
-<body>
 
-<div class="background-glow"></div>
+<body class="admin-body">
 
-<div id="loginContainer" class="login-container">
+<div class="bg-glow"></div>
 
-    <div class="glass-card">
+<!-- LOGIN -->
+<div
+    id="loginScreen"
+    class="login-screen"
+>
 
-        <h1>Admin Access</h1>
+    <div class="login-card">
 
-        <p>Enter Passcode</p>
+        <h1>
+            Site Search
+        </h1>
+
+        <p>
+            Login
+        </p>
 
         <input
+            id="username"
+            placeholder="Username"
+        >
+
+        <input
+            id="password"
             type="password"
-            id="passcode"
-            placeholder="Passcode"
+            placeholder="Password"
         >
 
         <button id="loginBtn">
-            Enter
+            Login
         </button>
 
-        <p id="errorText" class="error-text"></p>
+        <p id="loginError"></p>
 
     </div>
 
 </div>
 
-<div id="adminPanel" class="admin-panel hidden">
+<!-- PANEL -->
+<div
+    id="adminPanel"
+    class="admin-layout hidden"
+>
 
-    <header class="topbar">
-        <h1>Site Search Admin</h1>
-    </header>
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
 
-    <div class="admin-card">
+        <h2>
+            Site Search
+        </h2>
 
-        <h2>Add Website</h2>
+        <p id="roleText">
+            Loading...
+        </p>
 
-        <input
-            type="text"
-            id="siteName"
-            placeholder="Website Name"
+        <button
+            class="nav-btn active"
+            data-tab="dashboard"
         >
-
-        <input
-            type="text"
-            id="siteImage"
-            placeholder="Image URL"
-        >
-
-        <input
-            type="text"
-            id="siteURL"
-            placeholder="Website URL"
-        >
-
-        <button id="addSiteBtn">
-            Add Site
+            Dashboard
         </button>
 
-    </div>
+        <button
+            class="nav-btn"
+            data-tab="sites"
+        >
+            Sites
+        </button>
 
-    <div class="admin-sites">
+        <button
+            class="nav-btn admin-only"
+            data-tab="accounts"
+        >
+            Accounts
+        </button>
 
-        <h2>Current Sites</h2>
+        <button
+            class="nav-btn admin-only"
+            data-tab="maintenance"
+        >
+            Maintenance
+        </button>
 
-        <div id="adminSiteList">
+        <button
+            class="nav-btn admin-only"
+            data-tab="logs"
+        >
+            Logs
+        </button>
 
-        </div>
+    </aside>
 
-    </div>
+    <!-- MAIN -->
+    <main class="main-panel">
+
+        <!-- DASHBOARD -->
+        <section
+            id="dashboard"
+            class="tab-section active"
+        >
+
+            <h1>
+                Dashboard
+            </h1>
+
+            <div class="stats-grid">
+
+                <div class="stat-card">
+                    <h3>Total Sites</h3>
+                    <p id="siteCount">
+                        0
+                    </p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Accounts</h3>
+                    <p id="accountCount">
+                        0
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- SITES -->
+        <section
+            id="sites"
+            class="tab-section"
+        >
+
+            <h1>
+                Sites
+            </h1>
+
+            <div class="glass-card">
+
+                <input
+                    id="siteName"
+                    placeholder="Site Name"
+                >
+
+                <input
+                    id="siteImage"
+                    placeholder="Image URL"
+                >
+
+                <input
+                    id="siteURL"
+                    placeholder="Website URL"
+                >
+
+                <textarea
+                    id="siteDescription"
+                    placeholder="Description"
+                ></textarea>
+
+                <select
+                    id="siteCategory"
+                >
+                    <option>
+                        Games
+                    </option>
+
+                    <option>
+                        Tools
+                    </option>
+
+                    <option>
+                        School
+                    </option>
+
+                    <option>
+                        Entertainment
+                    </option>
+                </select>
+
+                <button id="addSiteBtn">
+                    Add Site
+                </button>
+
+            </div>
+
+            <div
+                id="adminSiteList"
+                class="site-list"
+            ></div>
+
+        </section>
+
+        <!-- ACCOUNTS -->
+        <section
+            id="accounts"
+            class="tab-section"
+        >
+
+            <h1>
+                Accounts
+            </h1>
+
+            <div class="glass-card">
+
+                <input
+                    id="newUsername"
+                    placeholder="Username"
+                >
+
+                <input
+                    id="newPassword"
+                    placeholder="Password"
+                >
+
+                <select id="newRole">
+                    <option value="standard">
+                        Standard
+                    </option>
+
+                    <option value="admin">
+                        Admin
+                    </option>
+                </select>
+
+                <button
+                    id="createUserBtn"
+                >
+                    Create User
+                </button>
+
+            </div>
+
+            <div
+                id="accountList"
+                class="site-list"
+            ></div>
+
+        </section>
+
+    </main>
 
 </div>
 
-<script type="module" src="firebase.js"></script>
-<script type="module" src="app.js"></script>
+<script
+    type="module"
+    src="auth.js"
+></script>
 
 </body>
 </html>
